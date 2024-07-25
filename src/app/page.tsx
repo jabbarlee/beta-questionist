@@ -1,10 +1,12 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+
+import SelectionForm from "@/components/SelectionForm";
 
 export default function Home() {
+
+
   return (
     <div>
-      
+      <SelectionForm/>
     </div>
   );
 }
