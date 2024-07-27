@@ -1,11 +1,11 @@
-export type OptionsProps = {
-    option1: string,
-    option2: string,
-    option3?: string
-  }
-  
+// types.ts
+export type Option = {
+  value: string;
+  label: string;
+}
+
 export type SelectorProps = {
-    options: OptionsProps,
-    title: string,
-    onSelect: (value: string) => void // Callback function to pass selected value
+  options: Option[];
+  title: string;
+  onSelect: (value: string) => void;
 }

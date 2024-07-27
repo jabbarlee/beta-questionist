@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react'
 import Selector from '@/components/Selector'
+import { subOptionsMapping } from '@/lib/data/subOptionsMapping'
 
 function Index() {
   const [selectedValues, setSelectedValues] = useState<{ [key: string]: string }>({})
@@ -15,27 +16,55 @@ function Index() {
     setTimeout(() => console.log(selectedValues), 0)
   }
 
+
   return (
     <div>
       <Selector
-        options={{
-          option1: 'No Calculator',
-          option2: 'Calculator',
-        }}
+        options={[
+          { value: 'no_calculator', label: 'No Calculator' },
+          { value: 'calculator', label: 'Calculator' },
+        ]}
         title='Test'
-        onSelect={(value) => handleSelect('test')(value)}
+        onSelect={handleSelect('test')}
       />
       <Selector
-        options={{
-          option1: 'Easy',
-          option2: 'Medium',
-          option3: 'Hard'
-        }}
+        options={[
+          { value: 'easy', label: 'Easy' },
+          { value: 'medium', label: 'Medium' },
+          { value: 'hard', label: 'Hard' }
+        ]}
         title='Level'
-        onSelect={(value) => handleSelect('level')(value)}
+        onSelect={handleSelect('level')}
       />
-      <p>Test: {selectedValues.test}</p>
-      <p>Level: {selectedValues.level}</p>
+      <Selector
+        options={[
+          { value: 'multiple-choice', label: 'Multiple choice' },
+          { value: 'grid-in', label: 'Grid-in' }
+        ]}
+        title='Question Type'
+        onSelect={handleSelect('questionType')}
+      /> 
+      <Selector
+        options={[
+          { value: 'algebra', label: 'Algebra' },
+          { value: 'geometry&trigonometry', label: 'Geometry' },
+          { value: 'advanced-math', label: 'Advanced Math' },
+          { value: 'problem-solving&data-analysis', label: 'Problem Solving and Data Analysis' },
+          { value: 'additional-topics', label: 'Additional Topics' }
+        ]}
+        title='Content Area'
+        onSelect={handleSelect('contentArea')} 
+      />
+      {selectedValues.contentArea && subOptionsMapping[selectedValues.contentArea] && (
+        <Selector
+          options={subOptionsMapping[selectedValues.contentArea]}
+          title={'Topics'}
+          onSelect={handleSelect('subContentArea')}
+        />
+      )}
+      <p>
+        Selected values: {JSON.stringify(selectedValues)}
+      </p>
     </div>
   )
 }

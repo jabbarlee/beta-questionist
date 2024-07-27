@@ -1,9 +1,8 @@
 'use client'
 
 import { useState } from 'react'
-import { MenuItem, Select, InputLabel, FormControl, SelectChangeEvent } from '@mui/material';
-import { OptionsProps, SelectorProps } from '@/types';
-
+import { MenuItem, Select, InputLabel, FormControl, SelectChangeEvent, Typography } from '@mui/material';
+import { SelectorProps } from '@/types';
 
 function Selector({ options, title, onSelect }: SelectorProps) {
   const [selection, setSelection] = useState<string>('')
@@ -16,7 +15,7 @@ function Selector({ options, title, onSelect }: SelectorProps) {
 
   return (
     <div>
-      <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
+      <FormControl sx={{ m: 1, minWidth: 200 }} size="small">
         <InputLabel id="demo-select-small-label">{title}</InputLabel>
         <Select
           labelId="demo-select-small-label"
@@ -28,9 +27,9 @@ function Selector({ options, title, onSelect }: SelectorProps) {
           <MenuItem value="">
             <em>None</em>
           </MenuItem>
-          <MenuItem value={options.option1}>{options.option1}</MenuItem>
-          <MenuItem value={options.option2}>{options.option2}</MenuItem> 
-          {options.option3 && <MenuItem value={options.option3}>{options.option3}</MenuItem>}
+          {options.map((option, index) => (
+            <MenuItem key={index} value={option.value}>{option.label}</MenuItem>
+          ))}
         </Select>
       </FormControl>
     </div>
