@@ -1,17 +1,12 @@
 'use client'
 
 import { useState } from 'react'
-import { MenuItem, Select, InputLabel, FormControl, SelectChangeEvent, Typography } from '@mui/material';
+import { MenuItem, Select, InputLabel, FormControl } from '@mui/material';
 import { SelectorProps } from '@/types';
+import { handleSelection } from '@/actions/formActions';
 
 function Selector({ options, title, onSelect }: SelectorProps) {
   const [selection, setSelection] = useState<string>('')
-
-  const handleChange = (event: SelectChangeEvent<string>) => {
-    const value = event.target.value as string
-    setSelection(value)
-    onSelect(value) // Call the callback function with the selected value
-  }
 
   return (
     <div>
@@ -22,7 +17,11 @@ function Selector({ options, title, onSelect }: SelectorProps) {
           id="demo-select-small"
           value={selection}
           label={title}
-          onChange={handleChange}
+          onChange={(event) => handleSelection({ 
+            event, 
+            setSelection, 
+            onSelect 
+          })}
         >
           <MenuItem value="">
             <em>None</em>

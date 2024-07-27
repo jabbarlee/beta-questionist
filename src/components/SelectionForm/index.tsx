@@ -3,19 +3,10 @@
 import React, { useState } from 'react'
 import Selector from '@/components/Selector'
 import { subOptionsMapping } from '@/lib/data/subOptionsMapping'
+import { useHandleSelect } from '@/actions/formActions'
 
 function Index() {
-  const [selectedValues, setSelectedValues] = useState<{ [key: string]: string }>({})
-
-  const handleSelect = (key: string) => (value: string) => {
-    setSelectedValues((prevValues) => ({
-      ...prevValues,
-      [key]: value,
-    }))
-    // Delay logging to ensure the state update is visible
-    setTimeout(() => console.log(selectedValues), 0)
-  }
-
+  const { selectedValues, handleSelect } = useHandleSelect()
 
   return (
     <div>
