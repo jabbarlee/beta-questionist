@@ -22,7 +22,7 @@ function Selector({ options, title, onSelect }: SelectorProps) {
             setSelection, 
             onSelect 
           })}
-        >
+        >  
           <MenuItem value="">
             <em>None</em>
           </MenuItem>

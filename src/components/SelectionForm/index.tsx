@@ -4,6 +4,7 @@ import React, { useState } from 'react'
 import Selector from '@/components/Selector'
 import { subOptionsMapping } from '@/lib/data/subOptionsMapping'
 import { useHandleSelect } from '@/actions/formActions'
+import { Button } from '@mui/material'
 
 function Index() {
   const { selectedValues, handleSelect } = useHandleSelect()
@@ -53,9 +54,7 @@ function Index() {
           onSelect={handleSelect('subContentArea')}
         />
       )}
-      <p>
-        Selected values: {JSON.stringify(selectedValues)}
-      </p>
+      <Button variant="contained">Generate</Button>
     </div>
   )
 }
