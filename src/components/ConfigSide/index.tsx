@@ -3,23 +3,10 @@
 import React, { useState } from 'react';
 import AccordionSelection from '../Accordion';
 import styles from './index.module.css';
+import { handleChipClick } from '@/actions/handleChipClick';
 
 const ConfigSide = () => {
   const [selectedChipsState, setSelectedChipsState] = useState<{ [key: string]: string[] }>({});
-
-  const handleChipClick = (accordionId: string, chip: string) => {
-    setSelectedChipsState((prevState) => {
-      const selectedChips = prevState[accordionId] || [];
-      const newSelectedChips = selectedChips.includes(chip)
-        ? selectedChips.filter((c) => c !== chip)
-        : [...selectedChips, chip];
-
-      return {
-        ...prevState,
-        [accordionId]: newSelectedChips,
-      };
-    });
-  };
 
   const accordions = [
     { id: 'accordion1', title: 'Accordion 1', metaText: 'Meta text 1', chips: ['Chip 1', 'Chip 2', 'Chip 3'] },
@@ -39,7 +26,7 @@ const ConfigSide = () => {
           chips={accordion.chips}
           accordionId={accordion.id}
           selectedChips={selectedChipsState[accordion.id] || []}
-          onChipClick={handleChipClick}
+          onChipClick={(chip) => handleChipClick({ accordionId: accordion.id, chip, setSelectedChipsState })}
         />
       ))}
       <div>

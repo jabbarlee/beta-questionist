@@ -11,5 +11,5 @@ export type AccordionSelectionProps = {
     chips: string[];
     accordionId: string;
     selectedChips: string[];
-    onChipClick: (accordionId: string, chip: string) => void;
+    onChipClick: ( chip: string) => void;
   }

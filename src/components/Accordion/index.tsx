@@ -25,7 +25,7 @@ const AccordionSelection: React.FC<AccordionSelectionProps> = ({
       <AccordionDetails sx={{ borderBottomLeftRadius: '8px', borderBottomRightRadius: '8px' }}>
         <Typography>{metaText}</Typography>
         <br />
-        <SelectionChip chips={chips} selectedChips={selectedChips} onChipClick={(chip) => onChipClick(accordionId, chip)} />
+        <SelectionChip chips={chips} selectedChips={selectedChips} onChipClick={onChipClick} />
       </AccordionDetails>
     </Accordion>
   );
