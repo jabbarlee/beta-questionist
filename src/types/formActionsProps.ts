@@ -4,3 +4,9 @@ export type ChipProps = {
     selectedChips: string[];
     onChipClick: (label: string) => void;
 }
+
+export type AccordionProps = {
+    title: string;
+    metaText: string;
+    chips: string[];
+}

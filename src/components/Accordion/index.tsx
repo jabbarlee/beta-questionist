@@ -4,16 +4,13 @@ import React, { useState } from 'react';
 import { Accordion, AccordionDetails, AccordionSummary, Typography } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import SelectionChip from '../SelectionChip';
+import { AccordionProps } from '@/types/formActionsProps';
 
 function Index({
   title,
   metaText,
   chips
-}: {
-  title: string;
-  metaText: string;
-  chips: string[];
-}) {
+}: AccordionProps) {
   const [selectedChips, setSelectedChips] = useState<string[]>([]);
 
   const handleChipClick = (label: string) => {
