@@ -3,7 +3,7 @@ import React from 'react';
 import { Accordion, AccordionDetails, AccordionSummary, Typography } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import SelectionChip from '../SelectionChip';
-import { AccordionSelectionProps } from '../../types/formActionsProps';
+import { AccordionSelectionProps } from '@/types/formActionsProps';
 
 const AccordionSelection: React.FC<AccordionSelectionProps> = ({
   title,

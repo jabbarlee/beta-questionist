@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import AccordionSelection from '../Accordion';
 import styles from './index.module.css';
 
-const ParentComponent: React.FC = () => {
+const ConfigSide = () => {
   const [selectedChipsState, setSelectedChipsState] = useState<{ [key: string]: string[] }>({});
 
   const handleChipClick = (accordionId: string, chip: string) => {
@@ -49,4 +49,4 @@ const ParentComponent: React.FC = () => {
   );
 };
 
-export default ParentComponent;
+export default ConfigSide;
