@@ -2,9 +2,14 @@
 
 import React from 'react';
 import { Chip, Stack } from '@mui/material';
-import { ChipProps } from '../../types/formActionsProps';
 
-const SelectionChip = ({ chips, selectedChips, onChipClick }: ChipProps) => {
+interface SelectionChipProps {
+  chips: string[];
+  selectedChips: string[];
+  onChipClick: (chip: string) => void;
+}
+
+const SelectionChip: React.FC<SelectionChipProps> = ({ chips, selectedChips, onChipClick }) => {
   return (
     <Stack direction="row" spacing={1}>
       {chips.map((chip, index) => (
