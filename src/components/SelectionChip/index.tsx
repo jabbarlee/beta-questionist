@@ -11,7 +11,7 @@ interface SelectionChipProps {
 
 const SelectionChip: React.FC<SelectionChipProps> = ({ chips, selectedChips, onChipClick }) => {
   return (
-    <Stack direction="row" spacing={1}>
+    <Stack direction="row" spacing={1} flexWrap="wrap" maxWidth="100%" useFlexGap>
       {chips.map((chip, index) => (
         <Chip
           key={index}
