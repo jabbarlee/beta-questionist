@@ -1,9 +1,28 @@
 .configSide {
-    flex: 2;
-    background-color: #f0f0f0; 
-    overflow-y: auto;
-    padding: 15px;
-    box-sizing: border-box;
-    height: 100%;
-    border-radius: 15px;
-  }
+  flex: 2;
+  background-color: #f0f0f0; 
+  overflow-y: auto;
+  padding: 15px;
+  box-sizing: border-box;
+  height: 100%;
+  border-radius: 15px;
+}
+.mainContainer {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.accordionsContainer {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  padding: 16px;
+  border-top: 1px solid #ddd;
+}
+  
