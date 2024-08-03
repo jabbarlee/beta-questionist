@@ -19,8 +19,7 @@ export const accordions = [
             'Beginner', 
             'Elementary', 
             'Intermediate', 
-            'Advanced', 
-            'Guru'
+            'Advanced'
         ]
     },
     {
