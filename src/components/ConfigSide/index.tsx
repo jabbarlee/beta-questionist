@@ -1,35 +1,53 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import AccordionSelection from '../Accordion';
 import styles from './index.module.css';
 import { handleChipClick } from '@/actions/handleChipClick';
-import { accordions } from '@/lib/data/questionConfig';
+import { accordions, units } from '@/lib/data/questionConfig';
 import { Typography, Divider } from '@mui/material';
 
 const ConfigSide = () => {
   const [selectedChipsState, setSelectedChipsState] = useState<{ [key: string]: string[] }>({});
+  const [filteredUnits, setFilteredUnits] = useState<string[]>([]);
 
-
-  const combinedSelectedChips = Object.values(selectedChipsState).flat();
-
+  useEffect(() => {
+    if(selectedChipsState.content_area){
+      console.log(selectedChipsState.content_area);
+      const newFilteredUnits = selectedChipsState.content_area.reduce<string[]>((acc, area) => {
+        const areaUnits = units[area] || [];
+        return [...acc, ...areaUnits];
+      }, []);
+      setFilteredUnits(newFilteredUnits);
+    }
+  }, [selectedChipsState]);
+  
   return (
     <div className={styles.configSide}>
-        <Typography variant="h5">Configure the question</Typography>
-        <br/>
-        <Divider />
-        <br/>
-        {accordions.map((accordion) => (
-            <AccordionSelection
-            key={accordion.id}
-            title={accordion.title}
-            metaText={accordion.metaText}
-            chips={accordion.chips}
-            accordionId={accordion.id}
-            selectedChips={selectedChipsState[accordion.id] || []}
-            onChipClick={(chip) => handleChipClick({ accordionId: accordion.id, chip, setSelectedChipsState })}
-            />
-        ))}
+      <Typography variant="h5">Configure the question</Typography>
+      <br />
+      <Divider />
+      <br />
+      {accordions.map((accordion) => (
+        <AccordionSelection
+          key={accordion.id}
+          title={accordion.title}
+          metaText={accordion.metaText}
+          chips={accordion.chips}
+          accordionId={accordion.id}
+          selectedChips={selectedChipsState[accordion.id] || []}
+          onChipClick={(chip) => handleChipClick({ accordionId: accordion.id, chip, setSelectedChipsState })}
+        />
+      ))}
+
+      <AccordionSelection
+        title="Select Units"
+        metaText="Select the units based on your previous selections."
+        chips={filteredUnits}
+        accordionId="unitsAccordion"
+        selectedChips={selectedChipsState['unitsAccordion'] || []}
+        onChipClick={(chip) => handleChipClick({ accordionId: 'unitsAccordion', chip, setSelectedChipsState })}
+      />
     </div>
   );
 };

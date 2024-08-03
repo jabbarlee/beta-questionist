@@ -24,3 +24,36 @@ export const accordions = [
         ]
     }
 ];
+
+export const units: { [key: string]: string[] } = {
+    'Algebra': [
+      'Linear Equations and Inequalities',
+      'Systems of Equations',
+      'Quadratics',
+      'Polynomials'
+    ],
+    'Advanced Math': [
+      'Functions',
+      'Rational Expressions',
+      'Manipulating Polynomials'
+    ],
+    'Problem Solving and Data Analysis': [
+      'Ratios, Proportions, and Percentages',
+      'Data Interpretation',
+      'Statistics',
+      'Probability'
+    ],
+    'Geometry and Trigonometry': [
+      'Angles, Circles, and Triangles',
+      'Volume and Surface Area',
+      'Trigonometric Functions',
+      'Coordinate Geometry',
+      'Transformations'
+    ],
+    'Additional Topics': [
+      'Complex Numbers',
+      'Vectors',
+      'Matrices'
+    ]
+  };
+  
