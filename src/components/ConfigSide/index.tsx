@@ -57,7 +57,7 @@ const ConfigSide = ({
           <Button variant="outlined">
             Reset
           </Button>
-          <Button variant='contained' color="secondary" onClick={() => onSubmit(selectedChipsState, filteredUnits)}>
+          <Button variant='contained' onClick={() => onSubmit(selectedChipsState, filteredUnits)}>
             Generate
           </Button>
         </div>

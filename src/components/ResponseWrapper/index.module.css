@@ -1,12 +1,10 @@
 .container{
     background-color: #ffffff;
-    padding: 15px;
-    border: #b5b4b4 1px solid;
+    padding: 20px;
+    border: #cbcbcb 1px solid;
     border-radius: 10px;
-    height: 100%;
-    width: 500px;
-    min-height: 300px;
-    max-height: 500px;
+    height: auto;
+    width: 450px;
     overflow-y: auto;
     box-sizing: border-box;
 }
