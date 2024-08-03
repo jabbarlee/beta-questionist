@@ -14,7 +14,7 @@ const AccordionSelection: React.FC<AccordionSelectionProps> = ({
   onChipClick,
 }) => {
   return (
-    <Accordion sx={{ boxShadow: 'none', '&:before': { display: 'none' }, width: '100%' }}>
+    <Accordion sx={{ boxShadow: 'none', '&:before': { display: 'none' }, width: '100%' }} defaultExpanded>
       <AccordionSummary
         expandIcon={<ExpandMoreIcon />}
         id={`${accordionId}-header`}

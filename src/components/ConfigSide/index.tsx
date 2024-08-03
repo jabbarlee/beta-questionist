@@ -7,13 +7,16 @@ import { handleChipClick } from '@/actions/handleChipClick';
 import { accordions, units } from '@/lib/data/questionConfig';
 import { Typography, Divider, Button } from '@mui/material';
 
-const ConfigSide = () => {
+const ConfigSide = ({
+  onSubmit,
+} : {
+  onSubmit: (selectedChipsState: { [key: string]: string[] }) => void
+}) => {
   const [selectedChipsState, setSelectedChipsState] = useState<{ [key: string]: string[] }>({});
   const [filteredUnits, setFilteredUnits] = useState<string[]>([]);
 
   useEffect(() => {
     if(selectedChipsState.content_area){
-      console.log(selectedChipsState.content_area);
       const newFilteredUnits = selectedChipsState.content_area.reduce<string[]>((acc, area) => {
         const areaUnits = units[area] || [];
         return [...acc, ...areaUnits];
@@ -51,8 +54,12 @@ const ConfigSide = () => {
           />
         </div>
         <div className={styles.buttonContainer}>
-          <Button variant='outlined'>Reset</Button>
-          <Button variant="contained">Generate</Button>
+          <Button variant="outlined">
+            Reset
+          </Button>
+          <Button variant='contained' color="secondary" onClick={() => onSubmit(selectedChipsState)}>
+            Generate
+          </Button>
         </div>
       </div>
     </div>
