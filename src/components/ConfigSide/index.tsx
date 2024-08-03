@@ -10,7 +10,7 @@ import { Typography, Divider, Button } from '@mui/material';
 const ConfigSide = ({
   onSubmit,
 } : {
-  onSubmit: (selectedChipsState: { [key: string]: string[] }) => void
+  onSubmit: (selectedChipsState: { [key: string]: string[] }, filteredUnits: string[]) => void
 }) => {
   const [selectedChipsState, setSelectedChipsState] = useState<{ [key: string]: string[] }>({});
   const [filteredUnits, setFilteredUnits] = useState<string[]>([]);
@@ -57,7 +57,7 @@ const ConfigSide = ({
           <Button variant="outlined">
             Reset
           </Button>
-          <Button variant='contained' color="secondary" onClick={() => onSubmit(selectedChipsState)}>
+          <Button variant='contained' color="secondary" onClick={() => onSubmit(selectedChipsState, filteredUnits)}>
             Generate
           </Button>
         </div>
