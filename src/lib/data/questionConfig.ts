@@ -12,8 +12,20 @@ export const accordions = [
         chips: ['Calculator', 'No Calculator']
     },
     {
+        id: 'level',
+        title: 'Level',
+        metaText: `Select the level of hardness in the questions.`,
+        chips: [
+            'Beginner', 
+            'Elementary', 
+            'Intermediate', 
+            'Advanced', 
+            'Guru'
+        ]
+    },
+    {
         id: 'content_area',
-        title: 'Choose Content Area',
+        title: 'Content Area',
         metaText: `Select the content areas you want to include in the questions. You can choose multiple content areas to cover a wide range of topics.`,
         chips: [
             'Algebra', 
