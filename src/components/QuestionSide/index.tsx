@@ -10,9 +10,7 @@ function index({
   return (
     <div className={styles.questionSide}>
       <div className={styles.container}>
-        {generatedAnswer && (
-          <ResponseWrapper response={generatedAnswer} />
-        )}
+        { generatedAnswer && <ResponseWrapper response={generatedAnswer} /> }
       </div>
     </div>
   )
