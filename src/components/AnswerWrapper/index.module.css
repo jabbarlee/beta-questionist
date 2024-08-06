@@ -1,0 +1,10 @@
+.container{
+    background-color: #ffffff;
+    padding: 20px;
+    border: #cbcbcb 1px solid;
+    border-radius: 10px;
+    height: auto;
+    width: 450px;
+    overflow-y: auto;
+    box-sizing: border-box;
+}
