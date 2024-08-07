@@ -15,9 +15,33 @@ export async function generatePrompt(prompt: string) {
                 messages: [
                     { role: "system", content: `
                         You are a helpful assistant that generates SAT questions based on a given difficulty,
-                        topics and question type. Only provide the question, without the answer.
+                        topics and question type. Only provide the question, without the answer. Provide one correct variant if it is a multiple choice question.
                     ` },
                     { role: "user", content: prompt }
+                ],
+            });   
+            
+            const question = completion.choices[0].message?.content;
+            
+            logger.info('Question generated: ' + question); 
+            return question
+        }catch(error){
+            console.log(error);
+
+            return error
+        }
+    }
+}
+
+export async function generateAnswer(prompt: string) {
+    if (!prompt) {
+        return NextResponse.json({ error: "Prompt is required" });
+    }else{
+        try{
+            const completion = await openai.chat.completions.create({
+                model: "gpt-4o-mini",
+                messages: [
+                    { role: "user", content: `Choose the correct answer to this question and provide the answer with the correct variant: ${prompt}. Do not provide additional text.` }
                 ],
             });   
             
@@ -25,12 +49,10 @@ export async function generatePrompt(prompt: string) {
             
             logger.info('Answer generated: ' + answer);
             return answer
-            // return NextResponse.json({ answer });
         }catch(error){
             console.log(error);
 
             return error
-            // return NextResponse.json({ error: "Failed to generate answer", errorMessage:error });
         }
     }
 }

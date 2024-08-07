@@ -10,13 +10,15 @@ const IndexPage = () => {
   const [generatedAnswer, setGeneratedAnswer] = useState<string>('');
 
   const handleGenerate = async (selectedChipsState: { [key: string]: string[] }, filteredUnits: string[]) => {
-    // const answer = await generateQuestion(selectedChipsState, filteredUnits) as string;
-    setGeneratedAnswer(`Answer generated: If 3x + 5 = 20, what is the value of x?
+    const answer = await generateQuestion(selectedChipsState, filteredUnits) as string;
+//     setGeneratedAnswer(`If 3x + 5 = 20, what is the value of x?
 
-A) 3
-B) 5
-C) 10
-D) 15`);
+// A) 3
+// B) 5
+// C) 10
+// D) 15`);
+
+    setGeneratedAnswer(answer);
   };
 
   return (
