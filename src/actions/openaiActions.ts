@@ -15,7 +15,7 @@ export async function generatePrompt(prompt: string) {
                 messages: [
                     { role: "system", content: `
                         You are a helpful assistant that generates SAT questions based on a given difficulty,
-                        topics and question type. Only provide the question, without the answer. Provide one correct variant if it is a multiple choice question.
+                        topics and question type. Only provide the question, without the answer.
                     ` },
                     { role: "user", content: prompt }
                 ],

@@ -7,32 +7,27 @@ import AnswerWrapper from '../AnswerWrapper'
 import { generateAnswer } from '@/actions/openaiActions'
 
 function Index({
-  generatedAnswer,
+  question,
+  answer
 } : {
-  generatedAnswer: string,
+  question: string,
+  answer: string
 }) {
   const [showAnswerCard, setShowAnswerCard] = useState(false)
-  const [answer, setAnswer] = useState('')
 
-  const handleShowAnswer = async () => {
-    setShowAnswerCard(true);
-
-    const answer = await generateAnswer(generatedAnswer) as string;
-    setAnswer(answer);
-  }
 
   const handleBackButton = () => {
     setShowAnswerCard(false);
-    setAnswer('');
+    
   }
   return (
     <div className={styles.questionSide}>
       <div className={`${styles.card} ${showAnswerCard ? styles.flipped : ''}`}>
         <div className={styles.cardFace}>
-          {generatedAnswer && (
+          {question && (
             <ResponseWrapper 
-              response={generatedAnswer} 
-              showAnswer={() => handleShowAnswer()}
+              response={question}
+              onClick={() => setShowAnswerCard(true)}
             />
           )}
         </div>

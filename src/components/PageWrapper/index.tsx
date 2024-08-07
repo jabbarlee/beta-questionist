@@ -5,26 +5,24 @@ import styles from './index.module.css';
 import ConfigSide from '@/components/ConfigSide';
 import QuestionSide from '@/components/QuestionSide';
 import { generateQuestion } from '@/actions/generateQuestion';
+import { generateAnswer } from '@/actions/openaiActions';
 
 const IndexPage = () => {
+  const [generatedQuestion, setGeneratedQuestion] = useState<string>('');
   const [generatedAnswer, setGeneratedAnswer] = useState<string>('');
-
+  
   const handleGenerate = async (selectedChipsState: { [key: string]: string[] }, filteredUnits: string[]) => {
-    const answer = await generateQuestion(selectedChipsState, filteredUnits) as string;
-//     setGeneratedAnswer(`If 3x + 5 = 20, what is the value of x?
+    const question = await generateQuestion(selectedChipsState, filteredUnits) as string;
+    const answer = await generateAnswer(question) as string;
 
-// A) 3
-// B) 5
-// C) 10
-// D) 15`);
-
+    setGeneratedQuestion(question);
     setGeneratedAnswer(answer);
   };
 
   return (
     <div className={styles.container}>
       <ConfigSide onSubmit={handleGenerate}/>
-      <QuestionSide generatedAnswer={generatedAnswer}/>
+      <QuestionSide question={generatedQuestion} answer={generatedAnswer}/>
     </div>
   );
 };
