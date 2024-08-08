@@ -4,13 +4,16 @@ import React, { useState } from 'react'
 import styles from './index.module.css'
 import Response from '../Response'
 import AnswerWrapper from '../AnswerWrapper'
+import { CircularProgress, Typography } from '@mui/material'
 
 function Index({
   question,
-  answer
-} : {
-  question: string,
-  answer: string
+  answer,
+  loading,
+}: {
+  question: string;
+  answer: string;
+  loading: boolean;
 }) {
   const [showAnswerCard, setShowAnswerCard] = useState(false)
 
@@ -18,8 +21,13 @@ function Index({
     <div className={styles.questionSide}>
       <div className={`${styles.card} ${showAnswerCard ? styles.flipped : ''}`}>
         <div className={styles.cardFace}>
-          {question && (
-            <Response 
+          {loading ? (
+            <div className={styles.loadingWrapper}>
+              <Typography variant="h5">Generating question...</Typography>
+              <CircularProgress color="inherit" />
+            </div>
+          ) : (
+            question && <Response 
               response={question}
               onClick={() => setShowAnswerCard(true)}
             />
