@@ -3,7 +3,7 @@ import styles from './index.module.css'
 import { marked } from 'marked'
 import { Button } from '@mui/material';
 
-function index({
+ function index({
     response,
     onClick
 } : {
@@ -12,6 +12,7 @@ function index({
 }) {
   const formattedResponse = marked(response);
 
+  console.log(response)
   return (
     <div className={styles.container}>
       <div dangerouslySetInnerHTML={{ __html: formattedResponse }} />
